@@ -6,6 +6,9 @@ plugins {
     id ("maven-publish")
 }
 
+group = "com.prabirkundu.toasty"
+version = "1.0"
+
 android {
     namespace = "com.prabirkundu.toasty"
     compileSdk = 34
@@ -92,10 +95,24 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
+                groupId = "com.prabirkundu.toasty"
+                artifactId = "Toasty"
+                version = "1.0.2"
+            }
+        }
+    }
+}
+
+/*afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            create<MavenPublication>("release") {
+                from(components["release"])
                 groupId = "com.github.Prabir-Kundu"
                 artifactId = "Toasty"
                 version = "1.0.1"
             }
         }
     }
-}
+}*/
