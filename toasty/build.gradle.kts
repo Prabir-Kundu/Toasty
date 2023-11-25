@@ -1,3 +1,5 @@
+import io.grpc.internal.SharedResourceHolder.release
+
 plugins {
     id("com.android.library")
     //TODO STEP 01
@@ -11,6 +13,7 @@ android {
     defaultConfig {
         minSdk = 24
 
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
 
@@ -18,7 +21,9 @@ android {
         aarMetadata {
             minCompileSdk = 29
         }
-
+        testFixtures {
+            enable = true
+        }
         //TODO STEP 03
         publishing {
             singleVariant("release") {
@@ -64,6 +69,24 @@ publishing {
     }
 }*/
 
+/*//Publish Library Locally
+publishing {
+    publications {
+        release(MavenPublication) {
+            group = "com.prabirkundu.toasty"
+            artifacts = "toasty"
+            //groupId = 'com.prabirkundu.toasty'
+            //artifactId = 'dialog_x'
+            version = "1.7"
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}*/
+
+
 afterEvaluate {
     publishing {
         publications {
@@ -71,7 +94,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.Prabir-Kundu"
                 artifactId = "Toasty"
-                version = "1.0.2"
+                version = "1.0.1"
             }
         }
     }
