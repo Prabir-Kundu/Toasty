@@ -6,8 +6,7 @@ plugins {
     id ("maven-publish")
 }
 
-group = "com.prabirkundu.toasty"
-version = "1.0"
+
 
 android {
     namespace = "com.prabirkundu.toasty"
@@ -24,9 +23,7 @@ android {
         aarMetadata {
             minCompileSdk = 29
         }
-        testFixtures {
-            enable = true
-        }
+
         //TODO STEP 03
         publishing {
             singleVariant("release") {
@@ -97,7 +94,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.prabirkundu.toasty"
                 artifactId = "Toasty"
-                version = "1.0.2"
+                version = "1.0.3"
             }
         }
     }
